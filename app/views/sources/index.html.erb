@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Published date</th>
+      <th>Day</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sources.each do |source| %>
+      <tr>
+        <td><%= source.url %></td>
+        <td><%= source.published_date %></td>
+        <td><%= source.day %></td>
+        <td><%= source.month %></td>
+        <td><%= source.year %></td>
+        <td><%= link_to 'Show', source %></td>
+        <td><%= link_to 'Edit', edit_source_path(source) %></td>
+        <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Source', new_source_path %>

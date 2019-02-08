@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @source.url %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @source.published_date %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @source.day %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @source.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @source.year %>
+</p>
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>

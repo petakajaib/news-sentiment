@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @entity_source.entity_id %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @entity_source.source_id %>
+</p>
+
+<%= link_to 'Edit', edit_entity_source_path(@entity_source) %> |
+<%= link_to 'Back', entity_sources_path %>

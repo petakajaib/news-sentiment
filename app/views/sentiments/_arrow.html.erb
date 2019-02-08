@@ -1,0 +1,8 @@
+<% if params[:order] == element.to_s && params[:direction] == "asc" %>
+
+  <%= link_to "↑", sentiments_path({"order" => element, "direction" => :desc}.reverse_merge(@params)), {class: "arrow active"} %>
+<% elsif params[:order] == element.to_s && params[:direction] == "desc"%>
+  <%= link_to "↓", sentiments_path({"order" => element, "direction" => :asc}.reverse_merge(@params)), {class: "arrow active"} %>
+<% else %>
+  <%= link_to "↑", sentiments_path({"order" => element}.reverse_merge(@params).merge({direction: :desc})), {class: "arrow"} %>
+<% end %>

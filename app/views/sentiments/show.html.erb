@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Positive:</strong>
+  <%= @sentiment.positive %>
+</p>
+
+<p>
+  <strong>Negative:</strong>
+  <%= @sentiment.negative %>
+</p>
+
+<%= link_to 'Edit', edit_sentiment_path(@sentiment) %> |
+<%= link_to 'Back', sentiments_path %>

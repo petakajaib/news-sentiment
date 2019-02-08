@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+
+
+  <% if @params.keys.length > 0 %>
+    <div class="params">
+      Showing for:
+      <br>
+      <% @params.each do |k, v| %>
+        <div class="">
+
+          <%= "#{k}: #{v}" %>
+        </div>
+
+      <% end %>
+      <%= link_to "Show All", sentiments_path %>
+    </div>
+  <% end %>
+
+
+<%= will_paginate @sentiments %>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Entity
+        <%= render "arrow", element: :entity %>
+      </th>
+      <th>
+        Entity type
+        <%= render "arrow", element: :entity_type %>
+      </th>
+      <th>Positive
+        <%= render "arrow", element: :positive %>
+      </th>
+      <th>Negative
+        <%= render "arrow", element: :negative %>
+      </th>
+      <th>
+        Evidence
+        <%= render "arrow", element: :evidence %>
+      </th>
+      <th>
+        Published date
+        <%= render "arrow", element: :published_date %>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sentiments.each do |sentiment| %>
+      <tr>
+        <td>
+          <%= sentiment.id %>
+        </td>
+        <td>
+          <%= link_to sentiment.entity.name, sentiments_path(entity_id: sentiment.entity_id) %>
+        </td>
+        <td>
+          <%= link_to sentiment.entity.tag, sentiments_path(entity_tag: sentiment.entity.tag) %>
+        </td>
+        <td>
+          <% if sentiment.positive > 0 %>
+            <%= link_to sentiment.positive.round(2), sentiments_path(sentiment: "positive", entity_id: sentiment.entity_id) %>
+          <% end %>
+        </td>
+        <td>
+          <% if sentiment.negative > 0 %>
+            <%= link_to sentiment.negative.round(2), sentiments_path(sentiment: "negative", entity_id: sentiment.entity_id) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to sentiment.sentence.sentence, sentiments_path(source_id: sentiment.source_id) %>
+        </td>
+        <td>
+          <%= link_to sentiment.source.published_date.to_date,
+          sentiments_path(published_date: sentiment.source.published_date) %>
+        </td>
+        <td>
+          <%= link_to "source", sentiment.source.url, target: "_blank" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @sentiments %>

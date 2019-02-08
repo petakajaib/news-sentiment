@@ -1,0 +1,27 @@
+<%= form_with(model: sentiment, local: true) do |form| %>
+  <% if sentiment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sentiment.errors.count, "error") %> prohibited this sentiment from being saved:</h2>
+
+      <ul>
+      <% sentiment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :positive %>
+    <%= form.text_field :positive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :negative %>
+    <%= form.text_field :negative %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
